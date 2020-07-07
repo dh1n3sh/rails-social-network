@@ -1,0 +1,12 @@
+<h1>All Profiles</h1>
+
+<hr>
+<% @profiles.each do |profile| %>
+<h2>
+    <%= profile.name%>
+</h2>
+<li>
+    <%= profile.desc%>
+</li>
+<hr>
+<% end %>
