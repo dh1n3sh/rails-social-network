@@ -1,6 +1,3 @@
-# rails-social-network
-A basic social network crud app for programmers using rails.
-
 # README
 
 This README would normally document whatever steps are necessary to get the
