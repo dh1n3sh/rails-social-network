@@ -7,10 +7,12 @@ class ProfileTest < ActiveSupport::TestCase
     assert !profile.save
   end
 
-  test "the truth" do
-    assert_equal profiles(:alex).id, 1
-    assert_equal profiles(:alex).name, 'Alex'
-    assert_equal profiles(:alex).role, 'Intern'
-    assert_equal profiles(:alex).company, 'Google'
+  test "verify profile" do
+    alex = profiles(:alex)
+    assert_equal alex.id, 1
+    assert_equal alex.name, 'Alex'
+    assert_equal alex.role, 'Intern'
+    assert_equal alex.company, 'Google'
+    
   end
 end
