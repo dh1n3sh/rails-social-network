@@ -1,3 +1,4 @@
 class Skill < ApplicationRecord
-    belongs_to :profile
+    has_many :certifications
+    has_many :profiles, through: :certifications
 end

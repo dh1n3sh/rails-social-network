@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  role: MyString
-  company: MyString
+alex:
+  id: 1
+  name: Alex
+  role: Intern
+  company: Google
 
-two:
-  name: MyString
-  role: MyString
-  company: MyString
+charlie:
+  id: 2
+  name: Charlie
+  role: Full stack developer
+  company: Reddit
