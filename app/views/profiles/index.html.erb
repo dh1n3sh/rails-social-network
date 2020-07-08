@@ -1,0 +1,19 @@
+<h1>All Profiles</h1>
+
+<hr>
+<% @profiles.each do |profile| %>
+<%
+=begin%>
+ <img src="<%= profile.photo%>" alt="profile picture" width="400" height="400"> 
+<%
+=end%>
+<h2>
+    <%= profile.name%>
+</h2>
+<h4>
+    <%= profile.role%> @<%= profile.company%>
+<h4>
+<%= link_to  "delete", profile_path(profile), method: :delete %>
+<hr>
+<% end %>
+<%= link_to "Create a New User", new_profile_path, class: "new_profile" %>
