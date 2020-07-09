@@ -16,6 +16,18 @@
     <%= f.label :company %><br />
     <%= f.text_field :company %>
   </p>
+  <% unused_skill = Skill.all.where.not(id:@profile.skills.collect{|e| e.id})%>
+  <% @profile.certifications.each do |c|%>
+    <%= c.skill.name%>
+    <%= link_to  "delete", certification_path(c), method: :delete %>
+    <br>
+  <%end%>
+  <label>
+    Choose a skill to add :  
+  </label>
+  <%= f.fields_for(:skills) do |s|%>
+    <%= s.collection_select :skill_id, unused_skill, :id, :name, :include_blank => true %>
+  <%end%>
   <p>
     <%= f.submit %>
   </p>

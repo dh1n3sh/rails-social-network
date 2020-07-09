@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Skill.create(name: 'node.js')
+Skill.create(name: 'Mysql')
+Skill.create(name: 'C++')
+Skill.create(name: 'Rails')
+Skill.create(name: 'AWS')
+Skill.create(name: 'React')
+Skill.create(name: 'Django')

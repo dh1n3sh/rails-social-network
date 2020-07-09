@@ -1,5 +1,19 @@
 class ProfilesController < ApplicationController
     include ProfilesHelper
+    def add_skill(prof, para)
+        unless para["skills"].nil?
+            para["skills"].each do |sk|         
+                begin
+                    skill_to_add = Skill.find(sk[1])
+                rescue ActiveRecord::RecordNotFound
+                # If the skill select was left empty     
+                else
+                    prof.skills << skill_to_add
+                end
+            end
+        end
+    end
+
     def index
         @profiles = Profile.all
     end
@@ -9,9 +23,10 @@ class ProfilesController < ApplicationController
     end
 
     def create
-        # fail
-        @article = Profile.new(profile_params)
-        @article.save
+        para = profile_params
+        pr = Profile.create(para.except("skills"))
+        add_skill(pr, para)
+
         redirect_to profiles_path
     end
 
@@ -27,7 +42,10 @@ class ProfilesController < ApplicationController
 
     def update
         profile = Profile.find(params[:id])
-        profile.update(profile_params)
+        para = profile_params
+        profile.update(para.except("skills"))
+        add_skill(profile, para)
+
         redirect_to profiles_path
     end
 end
