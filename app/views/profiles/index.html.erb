@@ -10,6 +10,11 @@
   <h4>
     <%= profile.role%> @<%= profile.company%>
   </h4>
+  <p>
+    <% profile.certifications.each do |cert|%>
+      <%= cert.skill.name%>
+    <%end%>
+  </p>
   <%= link_to  "delete", profile_path(profile), method: :delete %>
   <%= link_to  "edit", edit_profile_path(profile), method: :get %>
   <hr>

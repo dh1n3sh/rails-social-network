@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_130346) do
+ActiveRecord::Schema.define(version: 2020_07_10_034719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(version: 2020_07_08_130346) do
     t.integer "skill_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["profile_id", "skill_id"], name: "index_certifications_on_profile_id_and_skill_id", unique: true
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "role"
     t.string "company"
     t.string "photo"
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_130346) do
     t.string "icon"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_skills_on_name", unique: true
   end
 
 end

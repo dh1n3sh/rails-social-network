@@ -13,6 +13,11 @@ class ProfileTest < ActiveSupport::TestCase
     assert_equal alex.name, 'Alex'
     assert_equal alex.role, 'Intern'
     assert_equal alex.company, 'Google'
-    
+
   end
+
+  test "verify profile has skills" do
+    assert_equal profiles(:alex).skills.first.name, 'mysql'
+  end
+
 end
