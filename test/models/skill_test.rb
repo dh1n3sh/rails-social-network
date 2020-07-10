@@ -6,4 +6,10 @@ class SkillTest < ActiveSupport::TestCase
     assert_equal skills(:two).name, 'java'
   end
   
+  test "verify skills are unique" do
+    skill = Skill.new(name: 'mysql')
+    assert_raises(ActiveRecord::RecordNotUnique) { 
+      skill.save 
+    }
+  end
 end
