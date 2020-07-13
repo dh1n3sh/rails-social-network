@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   resources :profiles
   resources :skills
   resources :certifications
+  namespace 'api' do
+    namespace 'v1' do
+      resources :profiles
+    end
+  end
 end

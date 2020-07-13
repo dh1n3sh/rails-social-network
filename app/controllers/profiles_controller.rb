@@ -1,19 +1,6 @@
 class ProfilesController < ApplicationController
     include ProfilesHelper
-    def add_skill(prof, para)
-        unless para["skills"].nil?
-            para["skills"].each do |sk|         
-                begin
-                    skill_to_add = Skill.find(sk[1])
-                rescue ActiveRecord::RecordNotFound
-                # If the skill select was left empty     
-                else
-                    prof.skills << skill_to_add
-                end
-            end
-        end
-    end
-
+    
     def index
         @profiles = Profile.all
     end
@@ -33,6 +20,7 @@ class ProfilesController < ApplicationController
     def destroy
         @profile = Profile.find(params[:id])
         @profile.destroy
+        
         redirect_to profiles_path      
     end
 
