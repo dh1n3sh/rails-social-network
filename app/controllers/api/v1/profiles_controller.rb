@@ -4,9 +4,21 @@ module Api
             include ProfilesHelper
             protect_from_forgery with: :null_session
 
+            def get_skills(profile)
+                skills = []
+                profile.skills.each do |sk|
+                    skills << sk.name
+                end
+                return skills
+            end
             def index
                 profiles = Profile.all
-                render json: {status: 'SUCCESS', data: profiles}, status: :ok
+                profiles_with_skills = [] 
+                profiles.each do |p|
+                    skills = get_skills(p)
+                    profiles_with_skills << p.attributes.merge("skills"=>skills) 
+                end
+                render json: {status: 'SUCCESS', data: profiles_with_skills}, status: :ok
             end
         
             def create
@@ -17,8 +29,10 @@ module Api
             end
         
             def show
-                @profile = Profile.find(params[:id])
-                render json: @profile, status: :ok
+                profile = Profile.find(params[:id])
+                skills = get_skills(profile)
+                profile.attributes.merge("skills"=>skills) 
+                render json: profile.attributes.merge("skills"=>skills) , status: :ok
             end
 
             def destroy
