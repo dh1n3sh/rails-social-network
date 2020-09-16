@@ -4,7 +4,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
-  test "should get index" do
+  test "should get indexs" do
     get profiles_url
     assert_response :success
   end
