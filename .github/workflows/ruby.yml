@@ -55,6 +55,10 @@ jobs:
     #     POSTGRES_USER: postgres
     #     POSTGRES_PASSWORD: postgres
     - name: Run mintest
+      env:
+        RAILS_ENV: test
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
       run: rails test
 #     - name: Run RSpec
 #       run: COVERAGE=true bundle exec rspec  --require rails_helper
